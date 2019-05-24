@@ -69,16 +69,19 @@ def search(grid, dictionary):
     paths = []
     
     def do_search(path):
+        print(path)
         word = path_to_word(grid, path)
+        print(word)
         if word in dictionary:
             paths.append(path)
         for next_pos in neighbours[path[-1]]:
             if next_pos not in path:
                 do_search(path + [next_pos])
+
             
     for position in grid:
         do_search([position])
-        
+
     words = []
     for path in paths:
         words.append(path_to_word(grid, path))
@@ -111,7 +114,9 @@ def main():
     """
     This is the function that will run the whole project
     """
-    grid = make_grid(3, 3)
+    # grid = make_grid(2, 2)
+    grid = {(0,0):'A', (0,1):'B',
+            (1,0):'C', (1,1):'D'}
     # display_board(grid)
     dictionary = get_dictionary('words.txt')
     words = search(grid, dictionary)

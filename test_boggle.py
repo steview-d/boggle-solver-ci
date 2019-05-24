@@ -58,7 +58,7 @@ class TestBoggle(unittest.TestCase):
         self.assertIn((0, 2), neighbours)
         self.assertIn((0, 3), neighbours)
         self.assertIn((1, 1), neighbours)
-        self.assertIn((1, 1), neighbours)
+        self.assertIn((1, 3), neighbours)
         self.assertIn((2, 1), neighbours)
         self.assertIn((2, 2), neighbours)
         self.assertIn((2, 3), neighbours)
@@ -96,7 +96,10 @@ class TestBoggle(unittest.TestCase):
         twoLetterWord = 'AB'
         threeLetterWord = 'ABC'
         notThereWord = 'EEE'
-        dictionary = [twoLetterWord, threeLetterWord, notThereWord]
+        
+        fullwords = [twoLetterWord, threeLetterWord, notThereWord]
+        stems = ['A', 'AB', 'E', 'EE']
+        dictionary = fullwords, stems
         
         foundWords = boggle.search(grid, dictionary)
         
